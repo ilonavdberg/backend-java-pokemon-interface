@@ -23,8 +23,23 @@ public abstract class Pokemon {
         return attacks;
     }
 
-    public static void attack(String attack, Pokemon attacker, Pokemon defender) {
-        System.out.println(attacker.getName() + " attacked " + defender.getName() + " with " + attack);
+    public static void attack(String attack, Pokemon attacker, Pokemon defender, int damage) {
+        defender.setHp(defender.getHp() - damage);
+        System.out.println(attacker.getName() + " attacked " + defender.getName() + " with " + attack + " and did " + damage + " damage");
+        System.out.println(defender.getName() + " has " + defender.getHp() + " lives left");
+    }
+
+    public void eat(String food) {
+        if (food.equals(this.food)) {
+            this.setHp(this.getHp() + 50);
+            System.out.println(food + " eaten and gained 50 hp");
+        } else {
+            System.out.println(this.getName() + " does not eat " + food + "...");
+        }
+    }
+
+    public void setHp(int hpNew) {
+        this.hp = Math.max(hpNew, 0);
     }
 
     public String getName() {

@@ -248,17 +248,20 @@ public class PokemonGymImpl implements PokemonGym {
         Scanner speler_A = new Scanner(System.in);
 
         System.out.println("Do you want to attack or change your pokemon?");
-        System.out.println("Type a for attack or c for change");
+        System.out.println("Type a for attack or f for feed or c for change");
         String choice = speler_A.nextLine();
 
         if (choice.equalsIgnoreCase("a")) {
             String attack = chooseAttackPlayer(pokemon);
             performAttackPlayer(pokemon, gymPokemon, attack);
+        } else if (choice.equalsIgnoreCase("f")) {
+            System.out.println("What food will you give to your pokemon?");
+            String foodChoice = speler_A.nextLine();
+            pokemon.eat(foodChoice);
         } else {
             pokemon = choosePokemon(trainer);
             attackOrChange(pokemon, gymPokemon, trainer, gym);
             fightRound(trainer, gym, pokemon, gymPokemon);
         }
     }
-
 }

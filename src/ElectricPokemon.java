@@ -10,18 +10,23 @@ public class ElectricPokemon extends Pokemon {
     }
 
     public void thunderPunch(Pokemon name, Pokemon enemy) {
-        Pokemon.attack("thunderpunch", name, enemy);
+        Pokemon.attack("thunderpunch", name, enemy, 14);
     }
 
     public void electroBall(Pokemon name, Pokemon enemy) {
-        Pokemon.attack("electroball", name, enemy);
+        Pokemon.attack("electroball", name, enemy, 10);
     }
 
     public void thunder(Pokemon name, Pokemon enemy) {
-        Pokemon.attack("thunder", name, enemy);
+        if (enemy.getType().equals(ElectricPokemon.type)) {
+            enemy.setHp(enemy.getHp() + 10);
+            System.out.println(enemy.getName() + "gained 10 hp from thunder");
+            return;
+        }
+        Pokemon.attack("thunder", name, enemy, 17);
     }
 
     public void voltTackle(Pokemon name, Pokemon enemy) {
-        Pokemon.attack("volttackle", name, enemy);
+        Pokemon.attack("volttackle", name, enemy, 12);
     }
 }
